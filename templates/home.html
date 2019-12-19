@@ -1,0 +1,39 @@
+
+<!-- home.html -->
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<link href="//fonts.googleapis.com/css?family=Lemon" rel="stylesheet" type="text/css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="//djangogirlstaipei.github.io/assets/css/style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+  <div class="header">
+   <h1 class="site-title text-center">
+       <a href="/">A Django Girl’s Adventure</a>
+   </h1>
+  </div>
+  <div class="container">
+	{% for r in post_list %}
+	<div class="post-wrapper">
+	     <div class="post">
+	       <div class="post-heading">
+	  	    <h2 class="title">{{ r.title }}</h2>
+	  	    <div class="date"> {{ r.create_at|date:'Y / m / d H:i A' }}</div>		 
+		  </div>
+	       {% if r.photo %}
+	   		<div class="thumbnail"><img src="{{ r.photo }}" style="width:100%"></div>
+	  	  {% else %}
+	  	 	<div class="thumbnail thumbnail-default"></div>
+	  	  {% endif %}
+	  	  <div class="post-content read-more-block">{{ r.content }}</div>
+	  	  <div class="post-footer">
+	           <a class="read-more" href="{{ r.location }}">Read More <i class="fa fa-arrow-right"></i></a>
+		  </div>
+		</div>
+	</div> 
+	{% endfor %}
+  </div>
+</body>
+</html>
